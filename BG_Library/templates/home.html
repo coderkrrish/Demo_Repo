@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Library Homepage </title>
+        <body>
+            <h1>Welcome To Library</h1><hr>
+            <form action = "{% url 'home_page'%}" method = "post">
+                {%csrf_token%}
+                {%if single_book %}
+                    ID :- <input type = "number" name = "book_id" value = {{single_book.id}} readonly><br><br>
+                {%endif%}
+                Name :-  <input type = "text" name = "book_name" value = {{single_book.name}} ><br><br>
+                Quantity :- <input type = "number" name = "book_quantity" value = {{single_book.qty}} ><br><br>
+                Price :- <input type = "number" name = "book_price" value = {{single_book.price}}><br><br>
+                Author :- <input type = "text" name = "book_author" value = {{single_book.author}} ><br><br>
+
+                {%if single_book%}
+                    {%if single_book.is_published == True %}
+                        Is Published :- Yes<input type = "radio" name = "book_is_pub" value = "Yes" checked> No <input type = "radio" name = "book.is_pub" value = "No">
+                    {%else%}
+                        Is Published :-  Yes<input type = "radio" name = "book_is_pub" value = "Yes"> No <input type = "radio", name = "book.is_pub" value = "No" checked> 
+
+                    {%endif%}
+                {%else%}
+                    Is Published :-  Yes <input type = "radio" name = "book.is_pub" value = "Yes"> No <input type = "radio", name = "book.is_pub" value = "No"> 
+                {%endif%}<br><br>
+               
+
+                <input type = "submit" value = "Submit / Create Book"> <br><br>
+
+                <!-- {{Person_Names}} -->
+                <!-- {%for name in Person_Names%}
+                 {{name}}
+                {%endfor%} -->
+                <!-- {%for book in all_books%}
+                 {{book.id}}--{{book.name}} -- {{book.is_published}}<br>
+                {%endfor%} -->
+            
+            </form>
+            <a href = "{%url 'all_books'%}"> All Books </a><br>
+            <a href = "{%url 'logout_user' %}" class = 'btn btn-primary'>Logout</a><br>
+            <a href = "{% url 'create_csv' %}" class = 'btn btn-info'>Create CSV</a>
+
+            <form action = "{% url 'upload_csv' %}" method ="post" enctype="multipart/form-data" >
+                {%csrf_token%}
+                <input type = "file" name="csv_file">
+                <input type = "submit" class = 'btn btn-primary' value = "Upload CSV"><br>
+            </form>
+
+            
+  
+        </body>
+    </head>
+</html>

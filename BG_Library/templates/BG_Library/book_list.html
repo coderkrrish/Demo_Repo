@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>All Books</title>
+        <body>
+           <!-- <table>
+            <style>
+                table th, td{
+                    border :3px solid rosybrown;
+                }
+            </style>
+            <tr>
+                <th>Book ID</th>
+                <th>Book Name</th>
+                <th>Book Price</th>
+                <th>Book Quantity</th>
+                <th>Book Author</th>
+                <th>Book Is Published</th>
+            </tr>
+            {%for object in object_list%}
+            <tr>
+                <td>{{object.id}}</td>
+                <td>{{object.name}}</td>
+                <td>{{object.price}}</td>
+                <td>{{object.qty}}</td> 
+                <td>{{object.author}}</td>
+                <td>{{object.is_published}}</td>  
+                
+            {%endfor%} -->
+
+            <ul class  ="nav flex-column">
+            {%for object in object_list%}
+                <li class="nav-item">Book ID: {{object.id}}</li>
+                <li class="nav-item">Book Name: {{object.name}}</li>
+                <li class="nav-item">Book Quantity: {{object.qty}}</li>
+                <li class="nav-item">Book Price: {{object.price}}</li>
+                <li class="nav-item">Book Author: {{object.author}}</li>
+                <li class="nav-item">Is Published: {{object.is_published}}</li>
+                <hr/>
+            {%endfor%}
+            </ul>
+            </tr>
+            </table>
+            </body>
+            </head>
+            </html>
+
+        
+
+
+
+            

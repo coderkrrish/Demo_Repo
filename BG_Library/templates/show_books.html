@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>All Books</title>
+        <body>
+           <table>
+            <style>
+                table th, td{
+                    border :3px solid rosybrown;
+                }
+            </style>
+            <tr>
+                <th>Book ID</th>
+                <th>Book Name</th>
+                <th>Book Price</th>
+                <th>Book Quantity</th>
+                <th>Book Author</th>
+                <th>Book Is Published</th>
+                <th> Actions </th>
+            </tr>
+            {%for book in all_books%}
+            <tr>
+                <td>{{book.id}}</td>
+                <td>{{book.name}}</td>
+                <td>{{book.price}}</td>
+                <td>{{book.qty}}</td> 
+                <td>{{book.author}}</td>
+                <td>{{book.is_published}}</td>  
+                <td>
+                    <form action = "{%url 'update_book' book.id %}" method = "post">
+                        {%csrf_token%}
+                        <input type = "submit" value = "Update">
+                    </form>
+                     <form action = "{% url 'delete_book' book.id %}" method = "post">
+                        {%csrf_token%}
+                        <input type = "submit" value = "Delete">
+                     </form>
+                    
+                </td>     
+            </tr>
+            {%endfor%}
+           </table><hr><hr>
+           <a href = "{%url 'home_page' %}" %> Go TO Home Page </a>
+        </body>  
+    </head>
+</html>
